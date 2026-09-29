@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  --color-aurora: #7b2cff;
+  --color-aurora-light: #a86bff;
+  --color-aurora-dark: #120018;
+  --color-cinema: #050505;
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --aurora: #7b2cff;
+  --aurora-2: #b24bff;
+  --aurora-dark: #120018;
+  --cinema: #050505;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #050505;
+  color: #fff;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: "Sora", "Inter", system-ui, sans-serif;
+}
+
+/* Aurora background effects */
+.aurora-bg {
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(123, 44, 255, 0.35), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(178, 75, 255, 0.22), transparent 60%),
+    radial-gradient(700px 500px at 50% 110%, rgba(123, 44, 255, 0.18), transparent 60%),
+    #050505;
+}
+
+.aurora-text {
+  background: linear-gradient(135deg, #fff 10%, #d9c2ff 35%, #a86bff 60%, #7b2cff 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.neon-btn {
+  background: linear-gradient(135deg, #7b2cff, #a93cff 60%, #7b2cff);
+  background-size: 200% 200%;
+  box-shadow:
+    0 0 24px rgba(123, 44, 255, 0.55),
+    0 0 60px rgba(123, 44, 255, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  animation: neonShift 4s ease infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+.neon-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 0 32px rgba(123, 44, 255, 0.8),
+    0 0 90px rgba(123, 44, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  filter: brightness(1.1);
+}
+.neon-btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+@keyframes neonShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.glow-card {
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(123, 44, 255, 0.18),
+    0 0 40px rgba(123, 44, 255, 0.12);
+}
+
+.glow-border {
+  border: 1px solid rgba(123, 44, 255, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(123, 44, 255, 0.15),
+    0 0 30px rgba(123, 44, 255, 0.25),
+    inset 0 0 30px rgba(123, 44, 255, 0.06);
+}
+
+.premium-pulse {
+  animation: premiumPulse 2.2s ease-in-out infinite;
+}
+@keyframes premiumPulse {
+  0%, 100% { box-shadow: 0 0 24px rgba(123,44,255,.45), 0 0 70px rgba(123,44,255,.18); }
+  50% { box-shadow: 0 0 44px rgba(123,44,255,.75), 0 0 110px rgba(123,44,255,.32); }
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(200,150,255,.9), rgba(123,44,255,.1) 70%);
+  filter: blur(0.5px);
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
+@keyframes floatUp {
+  0% { transform: translateY(20px) scale(1); opacity: 0; }
+  15% { opacity: 0.9; }
+  100% { transform: translateY(-70vh) scale(0.6); opacity: 0; }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.12) 50%, transparent 70%);
+  animation: shimmerMove 2.2s infinite;
+}
+@keyframes shimmerMove {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.skeleton {
+  background: linear-gradient(110deg, #1a1026 30%, #2a1845 45%, #1a1026 60%);
+  background-size: 200% 100%;
+  animation: skeletonMove 1.4s linear infinite;
+}
+@keyframes skeletonMove {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Netflix-style row scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.cinematic-scroll::-webkit-scrollbar { height: 6px; width: 6px; }
+.cinematic-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,.06); border-radius: 999px; }
+.cinematic-scroll::-webkit-scrollbar-thumb { background: linear-gradient(90deg,#7b2cff,#b24bff); border-radius: 999px; }
+
+/* Card hover */
+.series-card {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+.series-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.7),
+    0 0 40px rgba(123,44,255,.35);
+  z-index: 20;
+}
+
+/* Modal animation */
+.modal-enter {
+  animation: modalEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes modalEnter {
+  0% { opacity: 0; transform: translateY(28px) scale(0.96); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+.backdrop-enter {
+  animation: backdropEnter 0.35s ease both;
+}
+@keyframes backdropEnter {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Hero ken burns */
+.kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0,0); }
+  100% { transform: scale(1.12) translate(-1.5%, -1%); }
+}
+
+.aurora-beam {
+  background: linear-gradient(180deg, transparent, rgba(123,44,255,.35) 40%, rgba(178,75,255,.15) 70%, transparent);
+  filter: blur(24px);
+  animation: beamSway 7s ease-in-out infinite alternate;
+}
+@keyframes beamSway {
+  0% { transform: rotate(-8deg) translateX(-10px); opacity: .7; }
+  100% { transform: rotate(8deg) translateX(10px); opacity: 1; }
+}
+
+.fade-up {
+  animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.stagger-1 { animation-delay: 0.08s; }
+.stagger-2 { animation-delay: 0.16s; }
+.stagger-3 { animation-delay: 0.24s; }
+.stagger-4 { animation-delay: 0.32s; }
+
+.video-glow {
+  box-shadow:
+    0 0 0 1px rgba(123,44,255,.35),
+    0 30px 100px rgba(0,0,0,.8),
+    0 0 80px rgba(123,44,255,.28);
+}
+
+/* Marquee */
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
